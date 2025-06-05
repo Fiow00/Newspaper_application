@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Posts</title>
+    </head>
+    <body>
+        <h1>Message board posts</h1>
+        <ul>
+            {% for post in post_list %}
+                <li>{{ post.text }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

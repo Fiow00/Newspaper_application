@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'hello_world',
     'pages',
+    'message_board',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

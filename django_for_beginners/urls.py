@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("hello", include("hello_world.urls")),
     path("pages/", include("pages.urls")),
+    path("messages/", include("message_board.urls")),
 ]
