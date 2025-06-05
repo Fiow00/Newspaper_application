@@ -1,0 +1,10 @@
+{% extends "blog/layout.html" %}
+
+{% block body %}
+    {% for post in post_list %}
+        <div class="post-entry">
+            <h1><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.body }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

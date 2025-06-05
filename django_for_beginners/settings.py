@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'hello_world',
     'pages',
     'message_board',
+    'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
