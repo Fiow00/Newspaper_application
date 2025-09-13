@@ -1,6 +1,6 @@
 # Django Newspaper App
 
-A newspaper web application built with Django using only class-based views. Users can register, post articles, and comment.
+A newspaper web application built with Django using class-based-view
 
 ## Features
 
