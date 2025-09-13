@@ -13,7 +13,7 @@ A newspaper web application built with Django using only class-based views. User
 
 1. **Clone the repository:**
    ```
-   git clone 
+   git clone https://github.com/Fiow00/django_for_beginners.git
    cd django_for_beginners
    ```
 
