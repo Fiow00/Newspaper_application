@@ -12,9 +12,11 @@
             </div>
             <div class="card-body">
                 <p>{{ article.body }}</p>
-                <a href="{% url 'newspaper:article_edit' article.pk %}">Edit</a> |
-                <a href="{% url 'newspaper:article_delete' article.pk %}">Delete</a> |
-                <a href="{% url 'newspaper:article_detail' article.pk %}">View</a>
+                {% if article.author == request.user %}
+                    <a href="{% url 'newspaper:article_edit' article.pk %}">Edit</a> |
+                    <a href="{% url 'newspaper:article_delete' article.pk %}">Delete</a> |
+                {% endif %}
+                <a href="{{ article.get_absolute_url }}">View</a>
             </div>
             <div class="card-footer">
                 {% for comment in article.comment_set.all %}

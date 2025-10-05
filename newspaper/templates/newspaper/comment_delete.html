@@ -1,0 +1,20 @@
+{% extends "newspaper/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <h2>Delete Comment</h2>
+    <p>Are you sure you want to delete this comment?</p>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>{{ comment.author }}</strong> on {{ comment.created_at|date:"F j, Y" }}</p>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger ml-2" type="submit">Confirm Delete</button>
+        <a href="{% url 'newspaper:article_detail' comment.article.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
