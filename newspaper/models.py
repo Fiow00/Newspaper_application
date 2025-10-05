@@ -19,7 +19,7 @@ class Article(models.Model):
         return reverse("newspaper:article_detail", kwargs={"pk": self.pk})
 
 
-class Comment(models.Model):  # new
+class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     comment = models.CharField(max_length=140)
     author = models.ForeignKey(
