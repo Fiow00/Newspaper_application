@@ -13,7 +13,20 @@
 
     <h4>Comments</h4>
         {% for comment in article.comments.all %}
-            <p>{{ comment.author }} &middot; {{ comment }}</p>
+            <div class="comment">
+                <p>
+                    <strong>{{ comment.author }}</strong> &middot; {{ comment }}
+                    {% if comment.author == user %}
+                        <small>
+                            <a href="{% url 'newspaper:comment_edit' comment.pk %}">Edit</a> |
+                            <a href="{% url 'newspaper:comment_delete' comment.pk %}">Delete</a>
+                        </small>
+                    {% endif %}
+                </p>
+                <small class="text-muted">{{ comment.created_at|date:"F j, Y, g:i a" }}</small>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
         {% endfor %}
     <hr>
 
