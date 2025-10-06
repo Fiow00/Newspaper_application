@@ -12,7 +12,7 @@
     <hr>
 
     <h4>Comments</h4>
-        {% for comment in article.comments.all %}
+        {% for comment in article.comment_set.all %}
             <div class="comment">
                 <p>
                     <strong>{{ comment.author }}</strong> &middot; {{ comment }}
