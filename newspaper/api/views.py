@@ -1,25 +1,30 @@
-from django.shortcuts import get_object_or_404
+# 3rd party imports
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
+# Django imports
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework import permissions, status
-
-from newspaper.models import *
-from .serializers import *
+# Local imports
+from newspaper.models import Article
+from .serializers import UserSerializer, ArticleSerializer
 
 
 @api_view(["GET"])
 def user_list(request):
+    """Return a list of all users."""
     users = get_user_model().objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
+
 @api_view(["GET", "POST"])
 def article_list(request):
     """
-    List all articles, or create a new article
+    GET: Return a list of all articles.
+    POST: Create a new article.
     """
     if request.method == "GET":
         articles = Article.objects.all()
@@ -31,13 +36,15 @@ def article_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET", "PUT", "DELETE"])
 def article_detail(request, pk):
     """
-    Retrieve, update or delete an article
+    GET: Retrieve a specific article.
+    PUT: Update an article.
+    DELETE: Delete an article.
     """
     article = get_object_or_404(Article, pk=pk)
 
@@ -46,12 +53,12 @@ def article_detail(request, pk):
         return Response(serializer.data)
 
     elif request.method == "PUT":
-        serializer = ArticleSerializer(data=request.data)
+        serializer = ArticleSerializer(article, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == "DELETE":
         article.delete()
-        return Response(status=status.HTTP_202_NOT_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
