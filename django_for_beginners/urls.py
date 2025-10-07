@@ -25,4 +25,7 @@ urlpatterns = [
     path("messages/", include("message_board.urls")),
     path("blogs/", include("blog.urls")),
     path("newspaper/", include("newspaper.urls")),
+
+    # API
+    path("api/v1/", include("newspaper.api.urls")),
 ]

@@ -31,12 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'hello_world',
-    'pages',
-    'message_board',
-    'blog',
-    'accounts',
-    'newspaper',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,8 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # local apps
+    'hello_world',
+    'pages',
+    'message_board',
+    'blog',
+    'accounts',
+    'newspaper',
+
+    # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [

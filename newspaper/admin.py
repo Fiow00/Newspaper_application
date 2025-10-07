@@ -10,6 +10,16 @@ class ArticleAdmin(admin.ModelAdmin):
     inlines = [
         CommentInline,
     ]
+    list_display = [
+        "title",
+        "body",
+        "author",
+    ]
+    list_filter = [
+        "title",
+        "body",
+        "author",
+    ]
 
 
 admin.site.register(Article, ArticleAdmin)
