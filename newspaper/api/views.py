@@ -1,13 +1,10 @@
-# 3rd party imports
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-# Django imports
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
-# Local imports
 from newspaper.models import Article
 from .serializers import UserSerializer, ArticleSerializer
 
